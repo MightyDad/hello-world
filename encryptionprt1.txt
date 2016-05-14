@@ -1,0 +1,101 @@
+#include <iostream>
+#include <string>
+
+int main()
+{
+    using namespace std;
+    cout << "Please type in what the message you want to encrypt";
+    string input;
+    string output;
+    getline(cin, input);
+    
+cout << "Please type in the Public Key";
+    int Public_key;
+    cin>> Public_key;
+
+cout << "Please type in the SN Value";
+    int SN ;
+    cin>> SN ;
+
+    int x;
+    x = input.length();
+    int B;
+    B=0;
+    while (x>B)
+    {
+         output[B] = (input[B] ^ SN) % Public_key;
+        cout<< output[B];
+         B ++;
+    }
+}  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+#include <string>
+#include <math.h>
+
+int main()
+{
+    using namespace std;
+    cout << "Please type in what the message you want to encrypt";
+    string input;
+    getline(cin, input);
+    string output;
+    cout<< "please enter the public key";
+    int public_key;
+    cin>> public_key;
+    cout<< "Please enter the SN value";
+    int SN;
+    cin>>SN;
+    int x;
+    x = input.length();
+    int B;
+    B=0;
+    while (x>B)
+    {
+         output[B] = input[B]^SN % (public_key);
+        cout<< output[B];
+         B ++;
+    }
+}  

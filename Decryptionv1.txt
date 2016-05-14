@@ -1,0 +1,67 @@
+#include <iostream>
+#include <string>
+int main(){
+    using namespace std;
+    
+    cout << "Please type in what the message you want to decrypt";
+    string inputD;
+    getline(cin, inputD);
+    string outputD;
+    
+    cout<< "Please enter Prime 1 key";
+    int Prime1;
+    cin>> Prime1;
+
+    cout<< "Please enter Prime 2 key";
+    int Prime2;
+    cin>>Prime2;
+
+cout<< "Please enter Scramble prime 1 key";
+    int Scramble1;
+    cin>>Scramble1;
+
+
+    
+    int modulus;
+    modulus = Prime1*Prime2;
+    
+    
+    int totient;
+    
+    totient = (Prime1-1)*(Prime2-1);
+    int e = 2;
+        while ( totient % e == 0)
+            {
+                e++;
+            }
+        //e*d mod totient = 1, find d
+    int d = (e * Scramble1 * totient);
+        while (e*d % totient != 1)
+            {d++;}
+        
+    int public_key;
+        public_key = modulus;
+	cout<< "your public key is:";
+	cout<< public_key;
+
+	cout<< "your SN value is:";
+	cout<< e;
+    
+/* For instance, in order to encrypt m = 65, we calculate
+
+c = 65^{17} \; \operatorname{mod}\; 3233 = 2790 
+To decrypt c = 2790, we calculate
+
+m = 2790^{2753} \; \operatorname{mod}\; 3233 = 65 
+*/
+    int x;
+    x = inputD.length();
+    int B;
+    B=0;
+    while (x>B)
+    {
+         outputD[B] = inputD[B]^d % modulus;
+        cout<< outputD[B];
+         B ++;
+    }
+}  
